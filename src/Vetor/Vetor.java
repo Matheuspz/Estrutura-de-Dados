@@ -1,3 +1,5 @@
+package Vetor;
+
 public class Vetor {
 
     private final int[] vetor;

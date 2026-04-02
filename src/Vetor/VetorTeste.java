@@ -1,3 +1,5 @@
+package Vetor;
+
 public class VetorTeste {
 
     static int totalTestes = 0;
@@ -61,7 +63,7 @@ public class VetorTeste {
     }
 
     static void testarVetorCheio() {
-        System.out.println("\n--- Vetor Cheio ---");
+        System.out.println("\n--- Vetor.Vetor Cheio ---");
         Vetor v = new Vetor(2);
         v.inserir(10);
         v.inserir(20);
