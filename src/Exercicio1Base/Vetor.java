@@ -18,34 +18,70 @@ public class Vetor {
             vetor[numElementos] = valor;
             numElementos++;
         } else {
-            Vetor newVetor = new Vetor(this.tamanho*2);
-            for(int i = 0; i < this.tamanho; i++) {
-                System.out.println("TESTE");
-                newVetor.inserir(this.vetor[i]);
-            }
-            newVetor.inserir(valor);
-            this.vetor = newVetor.vetor;
-            this.tamanho = newVetor.tamanho;
-            this.numElementos = newVetor.numElementos;
+            dobrarTamanhoVetor(valor, 0, false);
         }
     }
 
+    // Insere na posição indicada, realocando os próximos; se cheio, dobra o tamanho
+    public void inserirNaPosicao(int valor, int posicao) {
+        if(numElementos != this.tamanho) {
+            for(int i = numElementos; i > posicao; i--) {
+                vetor[i] = vetor[i-1];
+            }
+            vetor[posicao] = valor;
+            numElementos++;
+        } else {
+            dobrarTamanhoVetor(valor, posicao,true);
+        }
+    }
+
+    private void dobrarTamanhoVetor(int valor, int posicao, boolean isPosicao) {
+        Vetor newVetor = new Vetor(this.tamanho*2);
+        for(int i = 0; i < this.tamanho; i++) {
+            newVetor.inserir(this.vetor[i]);
+        }
+        if(isPosicao) {
+            newVetor.inserirNaPosicao(valor, posicao);
+        } else {
+            newVetor.inserir(valor);
+        }
+        this.vetor = newVetor.vetor;
+        this.tamanho = newVetor.tamanho;
+        this.numElementos = newVetor.numElementos;
+    }
+
     // Percorre item por item e retorna a posição; -1 se não encontrado
-    public int buscar(int valor) { return -1; }
+    public int buscar(int valor) {
+        for(int i = 0; i < this.numElementos; i++) {
+            if(vetor[i] == valor) {
+                return i;
+            }
+        }
+        return -1;
+    }
 
     // Encontra o elemento e realoca os próximos uma posição para trás
     public boolean remover(int valor) {
-
+        int posicao = buscar(valor);
+        if (posicao != -1) {
+            for(int i = posicao; i < numElementos-1; i++) {
+                vetor[i] = vetor[i+1];
+            }
+            vetor[numElementos - 1] = 0;
+            numElementos--;
+            return true;
+        }
         return false;
     }
 
     // Printa elemento por elemento do vetor
-    public void exibir() {}
-
-    // Insere na posição indicada, realocando os próximos; se cheio, dobra o tamanho
-    public void inserirNaPosicao(int posicao, int valor) {}
+    public void exibir() {
+        for(int i = 0; i < this.tamanho; i++) {
+            System.out.print("[" + vetor[i] + "] ");
+        }
+        System.out.println(" ");
+    }
 
     public int getNumElementos() { return numElementos; }
-
     public int getTamanho() { return tamanho; }
 }

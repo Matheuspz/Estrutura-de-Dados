@@ -2,18 +2,40 @@ package Exercicio1Base;
 
 public class ListaEncadeada {
 
-    No inicio;
-    No fim;
+    Node inicio;
+    Node fim;
 
-    public ListaEncadeada() {}
+    public ListaEncadeada() {
 
-    public void inserirInicio(int valor) {}
+    }
 
-    public void inserirFim(int valor) {}
+    public void inserirInicio(int valor) {
+        Node novoNode = new Node(valor);
+        if(fim == null) {
+            novoNode.proximo = inicio;
+            inicio = novoNode;
+            fim = novoNode;
+        } else {
+            novoNode.proximo = inicio;
+            inicio = novoNode;
+            novoNode.proximo.anterior = novoNode;
+        }
+    }
+
+    public void inserirFim(int valor) {
+        Node novoNode = new Node(valor);
+
+        novoNode.anterior = fim;
+        novoNode.anterior.proximo = novoNode;
+        fim = novoNode;
+    }
 
     public void inserirApos(int valorProcurado, int valorInserido) {}
 
-    public No buscar(int valor) { return null; }
+    public Node buscar(int valor) {
+
+        return null;
+    }
 
     public void removerInicio() {}
 

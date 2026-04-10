@@ -1,13 +1,15 @@
+import Exercicio1Base.ListaEncadeada;
 import Exercicio1Base.Vetor;
 
 public class Main {
     public static void main(String[] args) {
-        Vetor AmigoVetor = new Vetor(2);
-        AmigoVetor.inserir(1);
-        AmigoVetor.inserir(2);
+        ListaEncadeada lista = new ListaEncadeada();
 
-        AmigoVetor.inserir(3);
-        AmigoVetor.inserir(4);
+        lista.inserirInicio(3);
+
+        lista.inserirInicio(9);
+
+        lista.inserirFim(10);
 
 
     }
