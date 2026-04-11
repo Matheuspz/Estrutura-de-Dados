@@ -11,6 +11,12 @@ public class Main {
 
         lista.inserirFim(10);
 
+        lista.buscar(3);
 
+        lista.buscar(86);
+
+        lista.inserirApos(3,86);
+
+        System.out.println(lista.tamanho());
     }
 }
