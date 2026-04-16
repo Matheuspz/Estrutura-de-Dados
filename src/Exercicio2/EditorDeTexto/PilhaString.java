@@ -1,12 +1,12 @@
 package Exercicio2.EditorDeTexto;
 
-public class Refazer {
+public class PilhaString {
 
     private String[] vetor;
     private int tamanho;
     private int numElementos;
 
-    public Refazer(int tamanho) {
+    public PilhaString(int tamanho) {
         this.vetor = new String[tamanho];
         this.tamanho = tamanho;
         this.numElementos = 0;
@@ -27,9 +27,14 @@ public class Refazer {
             numElementos--;
         }
     }
+    public void limpar() {
+        while(numElementos != 0) {
+            remover();
+        }
+    }
 
     private void dobrarTamanhoPilha(String valor) {
-        Refazer newPilha = new Refazer(this.tamanho*2);
+        PilhaString newPilha = new PilhaString(this.tamanho*2);
         for(int i = 0; i < this.tamanho; i++) {
             newPilha.inserir(this.vetor[i]);
         }
@@ -45,4 +50,24 @@ public class Refazer {
     public boolean isFull() {
         return numElementos == tamanho;
     }
+
+    public String getTopo() {
+        if(!isEmpty()) {
+            return vetor[numElementos - 1];
+        } else {
+            return null;
+        }
+    }
+
+    public int getTamanho() {
+        return tamanho;
+    }
+    public int getNumElementos() {
+        return numElementos;
+    }
+    public String[] getVetor() {
+        return vetor;
+    }
+
+
 }
