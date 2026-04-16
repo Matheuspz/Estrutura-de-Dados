@@ -1,9 +1,14 @@
-package Exercicio2;
+package Exercicio2.EditorDeTexto;
 
 public class EditorDeTexto {
 
-    Pilha pilhaDesfazer;
-    Pilha pilhaRefazer;
-    
+    Desfazer pilhaDesfazer;
+    Refazer pilhaRefazer;
+    String texto;
+
+    public EditorDeTexto(Desfazer pilhaDesfazer, Refazer pilhaRefazer) {
+        this.pilhaDesfazer = pilhaDesfazer;
+        this.pilhaRefazer = pilhaRefazer;
+    }
 
 }
